@@ -1,4 +1,5 @@
 usage
+!in the root of the project must be .env file 
 ```ts
 import MainInterface from "./json-web-token-utility.js";
 import { config } from "dotenv";
@@ -7,8 +8,7 @@ import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url))
 config({ path: __dirname + "/../.env" });
 
-const mainInterface = new MainInterface(__dirname + "/../.env");
-console.log("crypto key => " + process.env.CRYPTO_KEY)
+const mainInterface = new MainInterface(__dirname + "/../.env"); // __dirname + "/../.env" <= path to env 
 const token = await mainInterface.signEncryptedToken({ username: "admin", password: "admin" }, "1h");
 console.log(token);
 console.log("1 token ^^^")
